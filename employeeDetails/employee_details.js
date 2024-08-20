@@ -1,7 +1,7 @@
 const employees = [
-    { id: 1, name: 'John Doe', age: 30, department: 'IT', salary: 5000 },
-    { id: 2, name: 'Alice Smith', age: 38, department: 'HR', salary: 4500 },
-    { id: 3, name: 'Bob Johnson', age: 35, department: 'Finance', salary: 6000 },
+    { id: 1, name: 'John Doe', age: 30, department: 'IT', salary: 5000, specialization: 'Javascript' },
+    { id: 2, name: 'Alice Smith', age: 38, department: 'HR', salary: 4500, specialization: 'Python' },
+    { id: 3, name: 'Bob Johnson', age: 35, department: 'Finance', salary: 6000, specialization: 'Java' },
 ];
 
 const totalEmployees = employees.map((employee) => `<p>${employee.id}: ${employee.name} - ${employee.department} - $${employee.salary}</p>`).join('');
@@ -28,4 +28,10 @@ function findEmployeeById(employeeID) {
     } else {
         document.getElementById('employeesDetails').innerHTML = 'No employee has been found with this ID';
     }
+}
+
+function findSpecialization() {
+    const hrEmployees = employees.filter(employee => employee.specialization === 'Javascript');
+    const hrEmployeesDisplay = hrEmployees.map((employee) => `<p>${employee.id} : ${employee.name} - ${employee.department} - $${employee.salary} -${employee.specialization}</p>`).join('');
+    document.getElementById('employeesDetails').innerHTML = hrEmployeesDisplay;
 }
